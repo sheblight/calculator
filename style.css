@@ -54,10 +54,10 @@ button {
     width: 236px;
 }
 
-.ac, .negative, .modulo {
+.toggle {
     background-color:rgb(146, 80, 121);
 }
 
-.division, .multiply, .sub, .add, .eval {
+.operator {
     background-color:rgb(140, 161, 89);    
 }
