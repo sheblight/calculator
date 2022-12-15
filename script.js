@@ -50,9 +50,12 @@ function updateDisplay() {
             }
             break;
         case "negative":
+            if (display.textContent == "0" || display.textContent == "0.") break;
             display.textContent = display.textContent.includes("-") ? display.textContent.replace("-","") : `-${display.textContent}`;
             break;
         case ".":
+            if (display.textContent.includes(".")) break;
+            display.textContent += ".";
             break;
         case "=":
             if (!isSecondOperand) break;
