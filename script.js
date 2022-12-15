@@ -38,6 +38,12 @@ function updateDisplay() {
             num1 = "";
             num2 = "";
             display.textContent = "0";
+            // turn off highlighted button after evaluation
+            if (previousSelectedOperator != null) {
+                let backgroundColor = getComputedStyle(this).getPropertyValue("--button-right-color");
+                previousSelectedOperator.style.backgroundColor = backgroundColor;
+                previousSelectedOperator = null;
+            }
             break;
         case "negative":
             break;
@@ -73,7 +79,7 @@ function updateDisplay() {
                 previousSelectedOperator.style.backgroundColor = backgroundColor;
                 previousSelectedOperator = null;
             }
-            
+
             display.textContent = result.toString().slice(0, 10);
             isSecondOperand = false;
 
