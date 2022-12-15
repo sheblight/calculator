@@ -20,8 +20,9 @@ function divide(a,b) {
 
 let num1 = "";
 let num2 = "";
-let operator = "+";
+let operator = "";
 let isSecondOperand = false;
+let previousSelectedOperator = null;
 
 function operate(operatorMethod) {
     return operatorMethod(Number(num1), Number(num2));
@@ -62,6 +63,12 @@ function updateDisplay() {
                 case "/":
                     result = operate(divide);
                     break;
+                default:
+            }
+            if (previousSelectedOperator != null) {
+                let backgroundColor = getComputedStyle(this).getPropertyValue("--button-right-color");
+                previousSelectedOperator.style.backgroundColor = backgroundColor;
+                previousSelectedOperator = null;
             }
             display.textContent = result.toString().slice(0, 10);
             isSecondOperand = false;
@@ -72,7 +79,15 @@ function updateDisplay() {
                 operator = this.value;
                 isSecondOperand = true;
                 
-                // TODO: highlight current button
+                if (previousSelectedOperator != null) {
+                    let backgroundColor = getComputedStyle(this).getPropertyValue("--button-right-color");
+                    previousSelectedOperator.style.backgroundColor = backgroundColor;
+                    previousSelectedOperator = null;
+                }
+                let highlightColor = getComputedStyle(this).getPropertyValue("--button-color-highlight");
+                this.style.backgroundColor = highlightColor;
+                previousSelectedOperator = this;
+                
             }
             else if (isSecondOperand) {
                 if (display.textContent == num1) {
