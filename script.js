@@ -50,6 +50,7 @@ function updateDisplay() {
             }
             break;
         case "negative":
+            display.textContent = display.textContent.includes("-") ? display.textContent.replace("-","") : `-${display.textContent}`;
             break;
         case ".":
             break;
