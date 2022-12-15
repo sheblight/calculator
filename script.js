@@ -63,7 +63,7 @@ function updateDisplay() {
                     result = operate(divide);
                     break;
             }
-            display.textContent = result.toString();
+            display.textContent = result.toString().slice(0, 10);
             isSecondOperand = false;
             break;
         default:
@@ -93,8 +93,6 @@ function updateDisplay() {
             break;
     }
 }
-
-
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach( button => {
