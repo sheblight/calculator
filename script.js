@@ -64,14 +64,24 @@ function updateDisplay() {
                     result = operate(divide);
                     break;
                 default:
+                    break;
             }
+            
+            // turn off highlighted button after evaluation
             if (previousSelectedOperator != null) {
                 let backgroundColor = getComputedStyle(this).getPropertyValue("--button-right-color");
                 previousSelectedOperator.style.backgroundColor = backgroundColor;
                 previousSelectedOperator = null;
             }
+            
             display.textContent = result.toString().slice(0, 10);
             isSecondOperand = false;
+
+            // if result is infinity, alert and reset to zero
+            if (display.textContent == "Infinity") {
+                alert("Cannot divide by 0!");
+                display.textContent = "0";
+            }
             break;
         default:
             if (Number.isNaN(Number(this.value))) {
