@@ -18,6 +18,10 @@ function divide(a,b) {
     return round(a/b);
 }
 
+function modulo(a,b) {
+    return round(a%b);
+}
+
 let num1 = "";
 let num2 = "";
 let operator = "";
@@ -55,7 +59,7 @@ function updateDisplay() {
             let result = 0;
             switch (operator) {
                 case "%":
-                    result = operate(add);
+                    result = operate(modulo);
                     break;
                 case "+":
                     result = operate(add);
